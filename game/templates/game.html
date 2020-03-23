@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>THE DETECTIVE GAME</title>
+    <style>
+        #myCanvas {
+            border: 1px solid black;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        div {
+            color: yellow;
+        }
+
+        #ac {
+            color: blue;
+        }
+
+        #eyn {
+            color: red;
+        }
+
+        .company-name {
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        section {
+            height: 40px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <canvas id="myCanvas"></canvas>
+    <h2>LOADING....</h2>
+    <script>
+        var newLine = "\r\n"
+        var message = "Welcome to THE DETECTIVE GAME"
+        message += newLine;
+        message += "A theif has escaped the prison ";
+        message += newLine;
+        message += "As being a detective help the police to catch theif";
+        message += newLine;
+        message += "Fast you only have 20 seconds"
+        message += newLine;
+        message += "Press OK and then press CMD+OPT+I for more information"
+        alert(message);
+        //scope
+        let m = {
+            x: undefined,
+            y: undefined
+        }
+
+        //basic
+        let canvas = document.querySelector('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var c = canvas.getContext('2d');
+        //color
+        var colorArray = [
+            'red',
+            'blue',
+            'orange',
+            'green',
+            'brown',
+        ]
+        var colorArray1 = [
+            'yellow',
+            'purple',
+            'black',
+            'pink',
+            'grey',
+        ]
+        //drawing
+        for (let i = 0; i < 1000; i++) {
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            c.beginPath();
+            c.arc(x, y, 5, 0, Math.PI * 2, true);
+            c.fillStyle = colorArray[Math.floor(Math.random() * colorArray.length)];
+            c.fill();
+        }
+        let dc = colorArray1[Math.floor(Math.random() * colorArray1.length)];
+        //the special one
+        let dx = Math.random() * window.innerWidth;
+        let dy = Math.random() * window.innerHeight;
+        c.beginPath();
+        c.arc(dx, dy, 5, 0, Math.PI * 2, true);
+        c.fillStyle = dc;
+        c.fill();
+        console.log('the thief is', dc, 'color');
+        console.log('your GPS tells that the thief is located at', dx, ',', dy);
+        //the interactivity
+        window.addEventListener("click",
+            function (event) {
+                m.x = event.x
+                m.y = event.y
+                if ((Math.abs(m.x - dx) < 5 && Math.abs(m.y - dy) < 5)) {
+                    confirm("Congrats! You have cought thief | To continue press CMD+R");
+                }
+            });
+        function myFunction() {
+            setTimeout(function () { alert('GAME OVER      the thief has escaped       to continue press CMD+R') }, 25000);
+        }
+        myFunction();
+    </script>
+</body>
+
+</html>
