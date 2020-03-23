@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>ACEYN home</title>
+    <style>
+        #ac {
+            color: blue;
+        }
+
+        #eyn {
+            color: red;
+        }
+
+        #subtitle {
+            padding-top: 0px;
+        }
+
+        h4 {
+            padding-top: 30px;
+        }
+
+        .title {
+            margin-top: 40px;
+        }
+
+        .line {
+            width: 670px;
+            float: left;
+            border: 1px solid grey;
+        }
+
+        #newgamebar {
+            float: left;
+            position: relative;
+            top: -12px;
+            font-size: small;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: rgb(180, 180, 180);
+        }
+
+        .bigbutton {
+            height: 100px;
+            float: left;
+            width: 719px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            background-color: #fafafa;
+            color: rgb(114, 114, 114);
+            border-right: 1px solid black;
+        }
+
+        .navigator {
+            font-size: 20px;
+            font-weight: 300;
+            position: relative;
+            top: 34px;
+            left: 100px;
+        }
+
+        .card {
+            margin-bottom: 100px;
+            float: left;
+            margin-left: 100px;
+        }
+
+        #carousel {
+            height: 1000px;
+            position: relative;
+            top: 250px;
+        }
+
+        #new-games {
+            position: absolute;
+            top: 600px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><span id="ac">AC</span><span id="eyn">EYN</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/game">Game</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/gmrcm" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Game Recommender
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/gmrcm/action">Action</a>
+                        <a class="dropdown-item" href="/gmrcm/adventure">Adventure</a>
+                        <a class="dropdown-item" href="/gmrcm/strategy">Strategy</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="title">
+        <h1>Welcome to ACEYN </h1>
+        <h6 id="subtitle">a collaboration of Aqua Crystal and EYN</h6>
+    </section>
+    <!--<h4>We have made this game recommender,to use it click <a href="/gmrcm">here</a></h4>
+        <h4>To play the mini game click <a href="/game">here</a></h4>-->
+    <!--carousel-->
+    <section>
+        <h5>If you are bored of the games you play, you have come to the right place.</h5>
+    </section>
+
+    <a href="/gmrcm">
+        <section class="bigbutton">
+            <h2 class="navigator">Game Recommender</h2>
+        </section>
+    </a>
+    <a href="/game">
+        <section class="bigbutton">
+            <h2 class="navigator">Mini Game</h2>
+        </section>
+    </a>
+
+
+
+    <!--new games-->
+    <p class="line"></p>
+    <h5 id="newgamebar">New Games</h5>
+    <p class="line"></p>
+
+    <section id="new-games">
+        {% for game in games %}
+
+        <div class="card" style="width: 18rem;">
+            <img src={{game.image_url}} class="card-img-top" alt="Game image" height="200px" width="350px">
+            <div class="card-body">
+                <h5 class="card-title">{{game.name}}</h5>
+                <p class="card-text">{{game.rate}} &#9733;</p>
+                <p class="card-text">{{game.review}}</p>
+                <a href={{game.download_url}} class="btn btn-primary">Download</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    {% endblock %}
+</body>
+
+</html>
