@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Action games</title>
+    <style>
+        #ac {
+            color: blue;
+        }
+
+        #eyn {
+            color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><span id="ac">AC</span><span id="eyn">EYN</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/game">Game</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/gmrcm" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Game Recommender
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/gmrcm/action">Action</a>
+                        <a class="dropdown-item" href="/gmrcm/adventure">Adventure</a>
+                        <a class="dropdown-item" href="/gmrcm/strategy">Strategy</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    {% for game in games %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{game.image_url}}" class="card-img-top" alt="game image">
+        <div class="card-body">
+            <h5 class="card-title">{{game.name}}</h5>
+            <p class="card-text">{{ game.rate }} &#9733;</p>
+            <a href="{{game.download_url}}" class="btn btn-primary">Download</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+</body>
+
+</html>

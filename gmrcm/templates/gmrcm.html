@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Game Recommender</title>
+    <style>
+        #ac {
+            color: blue;
+        }
+
+        #eyn {
+            color: red;
+        }
+
+        .card {
+            float: left;
+            margin-left: 100px;
+        }
+
+        h1 {
+            display: block;
+            padding: 100px 200px 100px 100px;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'base.html'%}
+    {% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><span id="ac">AC</span><span id="eyn">EYN</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/game">Game</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/gmrcm" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Game Recommender
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/gmrcm/action">Action</a>
+                        <a class="dropdown-item" href="/gmrcm/adventure">Adventure</a>
+                        <a class="dropdown-item" href="/gmrcm/strategy">Strategy</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Choose the genre you like the most</h1>
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">Action</h5>
+            <p class="card-text">Adventure games focus on puzzle solving within a narrative framework, generally with
+                few or no action elements. Other popular names for this genre are “graphic adventure” or
+                “point-and-click adventure”, but these represent only part of a much broader, diverse range of games.
+            </p>
+            <a href="/gmrcm/action" class="btn btn-primary">Suggest</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">Adventure</h5>
+            <p class="card-text">Action game. An action game is a video game genre that emphasizes physical challenges,
+                including hand–eye coordination and reaction-time. The genre includes a large variety of sub-genres,
+                such as fighting games, beat 'em ups, shooter games and platform games.</p>
+            <a href="/gmrcm/adventure" class="btn btn-primary">Suggest</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">Strategy</h5>
+            <p class="card-text">A strategy game or strategic game is a game in which the players' uncoerced, and often
+                autonomous decision-making skills have a high significance in determining the outcome. Almost all
+                strategy games require internal decision tree style thinking, and typically very high situational
+                awareness.</p>
+            <a href="/gmrcm/strategy" class="btn btn-primary">Suggest</a>
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>
